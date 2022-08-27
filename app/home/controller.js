@@ -1,6 +1,6 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 
-export default class HomePageController extends Controller {
+export default class IndexController extends Controller {
   @service store;
 }

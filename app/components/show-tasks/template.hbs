@@ -1,0 +1,45 @@
+<div class='container'>
+  <h1>Hackathon</h1>
+  <h3>ToDoList API</h3>
+</div>
+
+<div class='container'>
+  <table class='table table-striped'>
+    <thead class='table-active'>
+      <tr>
+        <th scope='col'>ID</th>
+        <th scope='col'>Descriptaion</th>
+        <th scope='col'>isDone</th>
+        <th scope='col'>Created date</th>
+        <th scope='col'>Updated date</th>
+        <th scope='col'>Button</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td>
+        <td><input
+            type='text'
+            class='form-control'
+            placeholder='Description'
+            aria-label='Username'
+            aria-describedby='basic-addon1'
+          /></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><button type='button' class='btn btn-success'>Add</button></td>
+      </tr>
+      {{#each @tasks as |task|}}
+        <tr>
+          <td>{{task.id}}</td>
+          <td>{{task.description}}</td>
+          <td>{{task.isDone}}</td>
+          <td>{{format-date task.createdAt 'long'}}</td>
+          <td>{{format-date task.updatedAt 'long'}}</td>
+          <td><button type='button' class='btn btn-danger'>Delete</button></td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
