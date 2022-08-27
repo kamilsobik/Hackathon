@@ -25,8 +25,8 @@
             placeholder='Description'
             aria-label='Username'
             aria-describedby='basic-addon1'
-            {{!-- value={{this.description}}
-            {{on 'input' (fn this.onDescriptionChange 'description')}} --}}
+            value={{this.newTask}}
+            {{on 'input' this.onDescriptionChange}}
           />
         </td>
         <td></td>
@@ -36,8 +36,7 @@
         <td><button
             type='button'
             class='btn btn-success'
-            {{!-- disabled={{this.hasEmptyField}}
-            {{on 'click' this.onCreatNewTask}} --}}
+            {{on 'click' this.addNewTask}}
           >Add</button></td>
       </tr>
       {{#each @tasks as |task|}}
@@ -69,7 +68,11 @@
                 />
               {{/if}}
             </div></td>
-          <td><button type='button' class='btn btn-danger'>Delete</button></td>
+          <td><button
+              type='button'
+              class='btn btn-danger'
+              {{on 'click' this.onDeleteTask}}
+            >Delete</button></td>
         </tr>
       {{/each}}
     </tbody>

@@ -9,34 +9,30 @@ export default class ProvidersOpenRequestComponent extends Component {
   @service router;
   @tracked isDone = false;
 
-  // constructor() {
-  //   super(...arguments);
-  //   this.record = this.store.createRecord('task');
-  // }
+  @action
+  onDescriptionChange({ target: { value } }) {
+    this.newTask = value;
+  }
 
-  // get hasEmptyField() {
-  //   const description = this.record;
-  //   return !description;
-  // }
-
-  // @action
-  // onPropertyChange(key, event) {
-  //   this.record[key] = event.target.value;
-  // }
-
-  // @action
-  // async onCreatNewTask() {
-  //   this.record.save();
-  // }
-
-  // @action
-  // async onDescriptionChange(title) {
-  //   await this.args.tasks.save();
-  // }
+  @action
+  async addNewTask() {
+    const task = { description: this.newTask };
+    await this.store.createRecord('task', task);
+    await this.args.tasks.save();
+    this.clearFieldDescription();
+  }
 
   @action
   async onIsDone(task) {
     task.isDone = true;
     await this.args.tasks.save();
+  }
+  clearFieldDescription() {
+    this.newTask = '';
+  }
+
+  @action
+  onDeleteTask() {
+    this.currentTask.destroyRecord();
   }
 }
