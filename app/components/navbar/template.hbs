@@ -1,0 +1,31 @@
+<nav class='navbar navbar-expand-lg navbar-dark bg-primary'>
+  <div class='container'>
+    <button
+      class='navbar-toggler'
+      type='button'
+      data-bs-toggle='collapse'
+      data-bs-target='#navbarNav'
+      aria-controls='navbarNav'
+      aria-expanded='false'
+      aria-label='Toggle navigation'
+    >
+      <span class='navbar-toggler-icon'></span>
+    </button>
+    <div class='collapse navbar-collapse' id='navbarNav'>
+      <ul class='navbar-nav'>
+        <li class='nav-item'>
+        </li>
+        <li class='nav-item'>
+          <LinkTo class='nav-link' @route='home'>All task</LinkTo>
+        </li>
+        <li class='nav-item'>
+          <LinkTo class='nav-link' @route='active'>Active task</LinkTo>
+        </li>
+        <li class='nav-item'>
+          <LinkTo class='nav-link' @route='completed'>Completed task</LinkTo>
+        </li>
+      </ul>
+    </div>
+    <div class='text-white'>Hackathon - ToDo List</div>
+  </div>
+</nav>
