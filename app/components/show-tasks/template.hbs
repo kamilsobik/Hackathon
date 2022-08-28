@@ -1,46 +1,39 @@
 <div class='container mt-5'>
+  <div class='input-group mb-3'>
+    <input
+      type='text'
+      class='form-floating'
+      placeholder='Enter new task'
+      aria-label='Enter new task'
+      aria-describedby='basic-addon1'
+      value={{this.newTask}}
+      {{on 'input' this.onDescriptionChange}}
+    />
+    <button
+      class='btn btn-success'
+      type='button'
+      {{on 'click' this.addNewTask}}
+    >Button</button>
+  </div>
+</div>
+
+<div class='container mt-5'>
   <table class='table table-striped'>
     <thead class='table-active'>
       <tr>
         <th scope='col'>ID</th>
         <th scope='col'>Descriptaion</th>
-        <th scope='col'>isDone</th>
         <th scope='col'>Created date</th>
-        <th scope='col'>Updated date</th>
         <th scope='col'>Done</th>
         <th scope='col'>Button</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td></td>
-        <td><input
-            type='text'
-            class='form-control'
-            placeholder='Description'
-            aria-label='Username'
-            aria-describedby='basic-addon1'
-            value={{this.newTask}}
-            {{on 'input' this.onDescriptionChange}}
-          />
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><button
-            type='button'
-            class='btn btn-success'
-            {{on 'click' this.addNewTask}}
-          >Add</button></td>
-      </tr>
       {{#each @tasks as |task|}}
-        <tr>
+        <tr class={{class-table task.isDone}}>
           <td>{{task.id}}</td>
           <td>{{task.description}}</td>
-          <td>{{task.isDone}}</td>
-          <td>{{moment-format task.createdAt 'DD-MM-YYYY  HH:mm:ss'}}</td>
-          <td>{{moment-format task.updatedAt 'DD-MM-YYYY  HH:mm:ss'}}</td>
+          <td>{{moment-format task.createdAt 'DD-MM-YYYY'}}</td>
           <td><div class='form-check'>
               {{#if task.isDone}}
                 <input
@@ -50,7 +43,6 @@
                   value=''
                   checked={{task.isDone}}
                   {{on 'click' (fn this.onIsDone task)}}
-                  disabled
                 />
               {{else}}
                 <input
